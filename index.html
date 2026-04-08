@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FABI ESTÁ LIBRE 💀</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&family=Oswald:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#080005;--bg2:#0e000a;--bg3:#060003;--yellow:#FFD600;--pink:#FF2060;--teal:#00FFD0;--orange:#FF6B00;--purple:#9400FF;--white:#F5EDD6;--gl:rgba(255,214,0,0.1);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'Oswald',sans-serif;overflow-x:hidden;cursor:crosshair;}
+body::after{content:'';position:fixed;inset:0;z-index:999;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");opacity:.4;}
+
+/* MARQUEE */
+.mq{overflow:hidden;border-top:2px solid var(–yellow);border-bottom:2px solid var(–yellow);padding:10px 0;background:var(–bg);position:relative;z-index:10;}
+.mq.inv{background:var(–yellow);border-color:var(–bg);}
+.mq-track{display:flex;white-space:nowrap;animation:mq 20s linear infinite;}
+.mq.rev .mq-track{animation-direction:reverse;}
+.mq-track span{font-family:‘Bangers’,cursive;font-size:clamp(1.2rem,3vw,2rem);letter-spacing:5px;padding:0 40px;color:var(–yellow);flex-shrink:0;}
+.mq.inv .mq-track span{color:var(–bg);}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* HERO */
+#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 20px;position:relative;overflow:hidden;}
+#hero::before{content:’’;position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,214,0,.1) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
+#hero::after{content:’’;position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(-55deg,transparent,transparent 30px,rgba(255,32,96,.04) 30px,rgba(255,32,96,.04) 31px);}
+.h-eye{font-family:‘Permanent Marker’,cursive;font-size:clamp(.9rem,2vw,1.2rem);color:var(–teal);letter-spacing:8px;text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeup .8s .2s forwards;}
+.h-title{font-family:‘Bangers’,cursive;font-size:clamp(4rem,20vw,17rem);line-height:.88;color:var(–white);text-shadow:6px 6px 0 var(–pink),14px 14px 0 rgba(148,0,255,.35);letter-spacing:4px;opacity:0;animation:fadeup .8s .4s forwards;}
+.h-title .acc{color:var(–yellow);}
+.h-sub{font-weight:300;font-size:clamp(.9rem,2vw,1.4rem);letter-spacing:10px;text-transform:uppercase;color:rgba(245,237,214,.4);margin-top:20px;opacity:0;animation:fadeup .8s .6s forwards;}
+.h-num{margin-top:44px;opacity:0;animation:fadeup .8s .9s forwards;}
+.h-num .dn{font-family:‘Bangers’,cursive;font-size:clamp(5rem,22vw,15rem);color:var(–yellow);line-height:1;text-shadow:5px 5px 0 var(–pink);display:block;transition:all .5s;}
+.h-num .dl{font-family:‘Bangers’,cursive;font-size:clamp(1.4rem,5vw,3rem);color:var(–teal);letter-spacing:8px;display:block;}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:rgba(245,237,214,.3);font-size:.75rem;letter-spacing:4px;text-transform:uppercase;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes fadeup{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+
+/* DATE */
+#dateSection{background:var(–yellow);padding:70px 20px;text-align:center;}
+#dateSection h2{font-family:‘Bangers’,cursive;font-size:clamp(2rem,6vw,4.5rem);color:var(–bg);letter-spacing:4px;margin-bottom:6px;}
+#dateSection p{color:rgba(10,0,5,.5);font-size:.8rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:30px;}
+.date-wrap{display:inline-block;border:4px solid var(–bg);box-shadow:8px 8px 0 var(–bg);}
+#startDate{padding:18px 30px;font-size:1.4rem;font-family:‘Bangers’,cursive;letter-spacing:3px;border:none;background:var(–bg);color:var(–yellow);cursor:pointer;outline:none;width:280px;text-align:center;}
+#startDate::-webkit-calendar-picker-indicator{filter:invert(1);cursor:pointer;}
+
+/* FREQUENCY */
+#freqSection{background:var(–bg2);padding:70px 40px;text-align:center;border-top:2px solid var(–gl);border-bottom:2px solid var(–gl);}
+#freqSection h2{font-family:‘Bangers’,cursive;font-size:clamp(1.8rem,5vw,4rem);letter-spacing:4px;margin-bottom:8px;}
+.fsub{font-size:.8rem;letter-spacing:4px;text-transform:uppercase;color:rgba(245,237,214,.35);margin-bottom:50px;}
+.freq-controls{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;}
+.freq-block{text-align:center;}
+.freq-label{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:rgba(245,237,214,.4);margin-bottom:16px;}
+.freq-display{font-family:‘Bangers’,cursive;font-size:clamp(2rem,8vw,5rem);line-height:1;margin-bottom:16px;min-width:120px;transition:all .3s;}
+input[type=range]{-webkit-appearance:none;appearance:none;width:220px;height:6px;background:rgba(255,214,0,.2);outline:none;border-radius:0;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;background:var(–yellow);border:3px solid var(–bg);cursor:pointer;border-radius:0;box-shadow:2px 2px 0 rgba(0,0,0,.5);}
+input[type=range].pink::-webkit-slider-thumb{background:var(–pink);}
+input[type=range].teal::-webkit-slider-thumb{background:var(–teal);}
+.range-labels{display:flex;justify-content:space-between;width:220px;font-size:.65rem;letter-spacing:2px;color:rgba(245,237,214,.3);margin-top:6px;text-transform:uppercase;}
+.usage-summary{max-width:700px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+@media(max-width:600px){.usage-summary{grid-template-columns:1fr;}}
+.us-cell{background:var(–bg);border:1px solid var(–gl);padding:28px 20px;text-align:center;}
+.us-cell .usl{font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:rgba(245,237,214,.3);margin-bottom:8px;}
+.us-cell .usv{font-family:‘Bangers’,cursive;font-size:clamp(1.5rem,5vw,2.8rem);transition:all .4s;}
+.section-divider{border:none;border-top:1px solid var(–gl);margin:50px 0;}
+
+/* STATS GRID */
+#stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,214,0,.08);padding:2px;}
+@media(max-width:700px){#stats{grid-template-columns:1fr;}}
+.sc{background:var(–bg);padding:55px 30px;text-align:center;border:1px solid var(–gl);position:relative;overflow:hidden;transition:background .3s;}
+.sc:hover{background:var(–bg2);}
+.sc::before{content:attr(data-icon);position:absolute;top:-5px;right:0;font-size:6rem;opacity:.05;pointer-events:none;transform:rotate(12deg);}
+.sc .sl{font-weight:300;font-size:.7rem;letter-spacing:5px;text-transform:uppercase;color:rgba(245,237,214,.35);margin-bottom:10px;}
+.sc .sv{font-family:‘Bangers’,cursive;font-size:clamp(2.5rem,7vw,5rem);line-height:1;letter-spacing:2px;transition:all .5s;}
+.sc .su{font-size:.75rem;letter-spacing:3px;color:rgba(245,237,214,.3);margin-top:6px;text-transform:uppercase;}
+.sc.koks .sv{color:var(–pink);}
+.sc.alk .sv{color:var(–purple);}
+.sc.total .sv{color:var(–yellow);font-size:clamp(3rem,9vw,7rem);}
+
+/* SAVED BIG */
+#savedHero{padding:110px 40px;text-align:center;background:var(–bg);position:relative;overflow:hidden;}
+#savedHero::before{content:’’;position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(148,0,255,.14) 0%,transparent 70%);}
+.sh-label{font-weight:300;font-size:.75rem;letter-spacing:8px;color:rgba(245,237,214,.3);text-transform:uppercase;margin-bottom:18px;}
+.sh-amount{font-family:‘Bangers’,cursive;font-size:clamp(4.5rem,20vw,17rem);line-height:.9;color:var(–white);text-shadow:0 0 80px rgba(255,32,96,.3),8px 8px 0 var(–pink);transition:all .5s;}
+.sh-amount .cur{color:var(–yellow);font-size:.45em;vertical-align:super;}
+.sh-sub{font-family:‘Permanent Marker’,cursive;font-size:clamp(1rem,3vw,1.8rem);color:var(–teal);margin-top:22px;letter-spacing:3px;}
+
+/* BUY */
+#buySection{padding:80px 40px;background:var(–bg3);}
+#buySection h2{font-family:‘Bangers’,cursive;font-size:clamp(2rem,6vw,5rem);letter-spacing:4px;color:var(–yellow);text-align:center;margin-bottom:50px;}
+.buy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1100px;margin:0 auto;}
+@media(max-width:900px){.buy-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.buy-grid{grid-template-columns:1fr;}}
+.bc{border:1px solid var(–gl);padding:40px 20px;text-align:center;background:var(–bg);transition:background .3s,transform .2s;cursor:default;}
+.bc:hover{background:var(–bg2);transform:translateY(-5px);}
+.bc .bci{font-size:2.8rem;display:block;margin-bottom:12px;}
+.bc .bcc{font-family:‘Bangers’,cursive;font-size:clamp(2rem,6vw,3.5rem);color:var(–yellow);line-height:1;display:block;transition:all .5s;}
+.bc .bcd{font-size:.72rem;letter-spacing:2px;color:rgba(245,237,214,.35);text-transform:uppercase;margin-top:8px;line-height:1.6;}
+
+/* MILESTONES */
+#milestones{padding:80px 40px;background:var(–bg);border-top:2px solid var(–gl);}
+#milestones h2{font-family:‘Bangers’,cursive;font-size:clamp(2rem,6vw,5rem);letter-spacing:4px;color:var(–white);margin-bottom:50px;}
+.ms{display:flex;gap:24px;align-items:center;padding:22px 0;border-bottom:1px solid rgba(255,214,0,.07);}
+.ms-lbl{font-weight:700;font-size:clamp(.9rem,2vw,1.1rem);letter-spacing:2px;text-transform:uppercase;min-width:190px;color:var(–white);}
+.ms-lbl small{display:block;font-weight:300;font-size:.65rem;letter-spacing:3px;color:rgba(245,237,214,.3);margin-top:3px;}
+.ms-bar{flex:1;height:6px;background:rgba(255,214,0,.1);position:relative;overflow:hidden;}
+.ms-fill{height:100%;position:absolute;left:0;top:0;transition:width 1.2s cubic-bezier(.25,.46,.45,.94);}
+.ms-pct{font-family:‘Bangers’,cursive;font-size:1.4rem;min-width:60px;text-align:right;transition:all .5s;}
+@media(max-width:600px){.ms{flex-wrap:wrap;}.ms-lbl{min-width:100%;}.ms-pct{margin-left:auto;}}
+
+/* BREAKDOWN */
+#breakdown{padding:80px 40px;background:var(–bg2);border-top:2px solid var(–gl);}
+#breakdown h2{font-family:‘Bangers’,cursive;font-size:clamp(2rem,5vw,4rem);letter-spacing:4px;color:var(–teal);margin-bottom:40px;}
+.bk-table{width:100%;border-collapse:collapse;max-width:700px;}
+.bk-table tr{border-bottom:1px solid rgba(255,214,0,.07);}
+.bk-table tr:hover td{background:rgba(255,214,0,.04);}
+.bk-table td{padding:16px 12px;font-size:clamp(.85rem,2vw,1rem);letter-spacing:1px;}
+.bk-table td:first-child{color:rgba(245,237,214,.55);width:65%;}
+.bk-table td:last-child{font-family:‘Bangers’,cursive;font-size:clamp(1.2rem,3vw,1.8rem);color:var(–yellow);letter-spacing:2px;text-align:right;}
+.bk-src{font-size:.7rem;letter-spacing:3px;color:rgba(245,237,214,.25);text-transform:uppercase;margin-top:20px;line-height:2.2;}
+
+/* MOTIV */
+#motivBanner{padding:60px 40px;text-align:center;background:var(–pink);}
+#motivBanner .mtext{font-family:‘Permanent Marker’,cursive;font-size:clamp(1.2rem,4vw,2.5rem);color:var(–white);line-height:1.6;text-shadow:2px 2px 0 rgba(0,0,0,.3);max-width:800px;margin:0 auto;}
+
+/* FOOTER */
+footer{padding:60px 40px;background:var(–bg3);border-top:2px solid var(–gl);}
+.ft-title{font-family:‘Bangers’,cursive;font-size:clamp(2.5rem,8vw,6rem);letter-spacing:4px;color:rgba(245,237,214,.07);margin-bottom:30px;line-height:1;}
+.ft-links{display:flex;gap:30px;flex-wrap:wrap;margin-bottom:30px;}
+.ft-links a{color:rgba(245,237,214,.4);text-decoration:none;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;transition:color .2s;}
+.ft-links a:hover{color:var(–yellow);}
+.ft-copy{font-size:.7rem;letter-spacing:3px;color:rgba(245,237,214,.2);text-transform:uppercase;line-height:2;}
+.emergency{display:inline-block;border:1px solid var(–teal);padding:8px 20px;font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(–teal);margin-bottom:20px;}
+</style>
+
+</head>
+<body>
+
+<!-- MARQUEE TOP -->
+
+<div class="mq">
+  <div class="mq-track">
+    <span>💀 FABI ESTÁ LIBRE</span><span>🌵 KEIN KOKS</span><span>🍷 KEIN ALKOHOL</span><span>💰 GELD GESPART</span><span>✨ NEUES LEBEN</span><span>🇨🇭 BASEL</span>
+    <span>💀 FABI ESTÁ LIBRE</span><span>🌵 KEIN KOKS</span><span>🍷 KEIN ALKOHOL</span><span>💰 GELD GESPART</span><span>✨ NEUES LEBEN</span><span>🇨🇭 BASEL</span>
+    <span>💀 FABI ESTÁ LIBRE</span><span>🌵 KEIN KOKS</span><span>🍷 KEIN ALKOHOL</span><span>💰 GELD GESPART</span><span>✨ NEUES LEBEN</span><span>🇨🇭 BASEL</span>
+  </div>
+</div>
+
+<!-- HERO -->
+
+<section id="hero">
+  <div class="h-eye">🌵 Basel / Schweiz / Clean Life</div>
+  <div class="h-title">FABI<br>ESTÁ<br><span class="acc">LIBRE</span></div>
+  <div class="h-sub">In Sobriety We Trust</div>
+  <div class="h-num">
+    <span class="dn" id="herodays">—</span>
+    <span class="dl">TAGE CLEAN</span>
+  </div>
+  <div class="scroll-hint">↓ scroll ↓</div>
+</section>
+
+<!-- DATE -->
+
+<div class="mq inv">
+  <div class="mq-track">
+    <span>WÄHLE DEINEN ERSTEN CLEAN DAY</span><span>WÄHLE DEINEN ERSTEN CLEAN DAY</span><span>WÄHLE DEINEN ERSTEN CLEAN DAY</span>
+    <span>WÄHLE DEINEN ERSTEN CLEAN DAY</span><span>WÄHLE DEINEN ERSTEN CLEAN DAY</span><span>WÄHLE DEINEN ERSTEN CLEAN DAY</span>
+  </div>
+</div>
+<section id="dateSection">
+  <h2>MEIN ERSTER SAUBERER TAG</h2>
+  <p>Datum auswählen — alles berechnet sich automatisch</p>
+  <div class="date-wrap"><input type="date" id="startDate"/></div>
+</section>
+
+<!-- FREQUENCY -->
+
+<div class="mq rev">
+  <div class="mq-track">
+    <span>⚙️ KONSUM KONFIGURIEREN</span><span>REALISTISCHE MENGEN</span><span>DEINE ZAHLEN</span>
+    <span>⚙️ KONSUM KONFIGURIEREN</span><span>REALISTISCHE MENGEN</span><span>DEINE ZAHLEN</span>
+    <span>⚙️ KONSUM KONFIGURIEREN</span><span>REALISTISCHE MENGEN</span><span>DEINE ZAHLEN</span>
+  </div>
+</div>
+<section id="freqSection">
+
+  <!-- KOKAIN -->
+
+  <h2 style="color:var(--pink);">❄️ KOKAIN-KONSUM</h2>
+  <p class="fsub">Wie oft und wie viel — deine Zahlen, deine Wahrheit</p>
+  <div class="freq-controls">
+    <div class="freq-block">
+      <div class="freq-label">Tage pro Woche</div>
+      <div class="freq-display" id="koksDaysDisp" style="color:var(--pink)">2</div>
+      <input type="range" class="pink" id="koksDays" min="1" max="7" step="1" value="2"/>
+      <div class="range-labels"><span>1×/Wo</span><span>täglich</span></div>
+    </div>
+    <div class="freq-block">
+      <div class="freq-label">Gramm pro Session</div>
+      <div class="freq-display" id="koksGramDisp" style="color:var(--pink)">1.0g</div>
+      <input type="range" class="pink" id="koksGram" min="0.5" max="3" step="0.5" value="1"/>
+      <div class="range-labels"><span>0.5g</span><span>3g</span></div>
+    </div>
+  </div>
+  <div class="usage-summary" style="margin-bottom:16px;">
+    <div class="us-cell"><div class="usl">Gramm / Woche</div><div class="usv" id="gPerWeek" style="color:var(--pink)">2.0g</div></div>
+    <div class="us-cell"><div class="usl">CHF / Woche</div><div class="usv" id="chfPerWeek" style="color:var(--orange)">180</div></div>
+    <div class="us-cell"><div class="usl">CHF / Monat</div><div class="usv" id="chfPerMonth" style="color:var(--yellow)">779</div></div>
+  </div>
+
+  <hr class="section-divider"/>
+
+  <!-- ALKOHOL -->
+
+  <h2 style="color:var(--purple);">🍷 ALKOHOL-KONSUM</h2>
+  <p class="fsub">Rotwein · Whisky Cola · Gin Tonic · Vodka</p>
+  <div class="freq-controls">
+    <div class="freq-block">
+      <div class="freq-label">Trinktage pro Woche</div>
+      <div class="freq-display" id="alkDaysDisp" style="color:var(--purple)">5</div>
+      <input type="range" class="teal" id="alkDays" min="1" max="7" step="1" value="5"/>
+      <div class="range-labels"><span>1×/Wo</span><span>täglich</span></div>
+    </div>
+    <div class="freq-block">
+      <div class="freq-label">Ausgaben pro Abend</div>
+      <div class="freq-display" id="alkChfDisp" style="color:var(--purple)">20 CHF</div>
+      <input type="range" class="teal" id="alkChfSlider" min="10" max="80" step="5" value="20"/>
+      <div class="range-labels"><span>10 CHF</span><span>80 CHF</span></div>
+    </div>
+  </div>
+  <div style="font-size:.7rem;letter-spacing:3px;color:rgba(245,237,214,.25);text-transform:uppercase;max-width:600px;margin:0 auto;line-height:2.5;">
+    🍷 Rotwein ~10–15 CHF (Coop Basel) &nbsp;·&nbsp; 🥃 Whisky Cola Bar ~7–9 CHF &nbsp;·&nbsp; 🍸 Gin Tonic Dose ~3–5 CHF &nbsp;·&nbsp; 🍶 Vodka Flasche ~18–25 CHF
+  </div>
+
+</section>
+
+<!-- STATS -->
+
+<div id="stats">
+  <div class="sc koks" data-icon="❄️"><div class="sl">Koks gespart</div><div class="sv" id="koksTotal">—</div><div class="su">CHF</div></div>
+  <div class="sc alk" data-icon="🍷"><div class="sl">Alkohol gespart</div><div class="sv" id="alkTotal">—</div><div class="su">CHF</div></div>
+  <div class="sc total" data-icon="💰"><div class="sl">Total gespart</div><div class="sv" id="totalChf">—</div><div class="su">CHF</div></div>
+</div>
+
+<!-- SAVED BIG -->
+
+<div class="mq inv">
+  <div class="mq-track">
+    <span>💸 GESPARTES GELD</span><span>ECHTER WERT</span><span>DEIN LEBEN ZURÜCK</span>
+    <span>💸 GESPARTES GELD</span><span>ECHTER WERT</span><span>DEIN LEBEN ZURÜCK</span>
+    <span>💸 GESPARTES GELD</span><span>ECHTER WERT</span><span>DEIN LEBEN ZURÜCK</span>
+  </div>
+</div>
+<section id="savedHero">
+  <div class="sh-label">Total gespart seit Clean Day</div>
+  <div class="sh-amount"><span class="cur">CHF</span> <span id="savedBig">0</span></div>
+  <div class="sh-sub" id="savedMotiv">🤔 Wähle ein Datum oben!</div>
+</section>
+
+<!-- BUY SECTION -->
+
+<section id="buySection">
+  <h2>🛍️ WAS DU STATTDESSEN HÄTTEST</h2>
+  <div class="buy-grid">
+    <div class="bc"><span class="bci">✈️</span><span class="bcc" id="b1">—</span><div class="bcd">EasyJet Basel–Barcelona<br>(~80 CHF)</div></div>
+    <div class="bc"><span class="bci">🏨</span><span class="bcc" id="b2">—</span><div class="bcd">Nacht Hotel Merian Basel<br>(~130 CHF)</div></div>
+    <div class="bc"><span class="bci">🎫</span><span class="bcc" id="b3">—</span><div class="bcd">FC Basel Joggeli Ticket<br>(~28 CHF)</div></div>
+    <div class="bc"><span class="bci">🍣</span><span class="bcc" id="b4">—</span><div class="bcd">Sushi-Dinner für zwei<br>(~65 CHF)</div></div>
+    <div class="bc"><span class="bci">🚲</span><span class="bcc" id="b5">—</span><div class="bcd">E-Bike mieten, ganzer Tag<br>(~45 CHF)</div></div>
+    <div class="bc"><span class="bci">🎪</span><span class="bcc" id="b6">—</span><div class="bcd">Art Basel Tagesticket<br>(~55 CHF)</div></div>
+    <div class="bc"><span class="bci">💪</span><span class="bcc" id="b7">—</span><div class="bcd">Monat Fitnessstudio Basel<br>(~65 CHF)</div></div>
+    <div class="bc"><span class="bci">🛳️</span><span class="bcc" id="b8">—</span><div class="bcd">Flusskreuzfahrt Rhein<br>(~120 CHF)</div></div>
+  </div>
+</section>
+
+<!-- MILESTONES -->
+
+<div class="mq rev">
+  <div class="mq-track">
+    <span>🏆 MEILENSTEINE</span><span>JEDER TAG ZÄHLT</span><span>🔥 KEEP GOING</span>
+    <span>🏆 MEILENSTEINE</span><span>JEDER TAG ZÄHLT</span><span>🔥 KEEP GOING</span>
+    <span>🏆 MEILENSTEINE</span><span>JEDER TAG ZÄHLT</span><span>🔥 KEEP GOING</span>
+  </div>
+</div>
+<section id="milestones">
+  <h2>MEILENSTEINE</h2>
+  <div class="ms"><div class="ms-lbl">7 Tage<small>Eine Woche 🌟</small></div><div class="ms-bar"><div class="ms-fill" id="mf1" style="background:var(--teal);width:0%"></div></div><div class="ms-pct" id="mp1" style="color:var(--teal)">0%</div></div>
+  <div class="ms"><div class="ms-lbl">30 Tage<small>Ein Monat 💪</small></div><div class="ms-bar"><div class="ms-fill" id="mf2" style="background:var(--orange);width:0%"></div></div><div class="ms-pct" id="mp2" style="color:var(--orange)">0%</div></div>
+  <div class="ms"><div class="ms-lbl">100 Tage<small>Dreistellig 🔥</small></div><div class="ms-bar"><div class="ms-fill" id="mf3" style="background:var(--pink);width:0%"></div></div><div class="ms-pct" id="mp3" style="color:var(--pink)">0%</div></div>
+  <div class="ms"><div class="ms-lbl">180 Tage<small>Halbes Jahr 🌈</small></div><div class="ms-bar"><div class="ms-fill" id="mf4" style="background:var(--purple);width:0%"></div></div><div class="ms-pct" id="mp4" style="color:var(--purple)">0%</div></div>
+  <div class="ms"><div class="ms-lbl">365 Tage<small>Ein Jahr 🎉</small></div><div class="ms-bar"><div class="ms-fill" id="mf5" style="background:var(--yellow);width:0%"></div></div><div class="ms-pct" id="mp5" style="color:var(--yellow)">0%</div></div>
+</section>
+
+<!-- BREAKDOWN -->
+
+<section id="breakdown">
+  <h2>DIE RECHNUNG</h2>
+  <table class="bk-table">
+    <tr><td>❄️ Kokain Basel — Strassenpreis 2024</td><td>~90 CHF / g</td></tr>
+    <tr><td>⚗️ Reinheitsgrad (Basler Strassenware)</td><td>60–80%</td></tr>
+    <tr><td>🍷 Rotwein (Coop / Supermarkt Basel)</td><td>10–15 CHF / Flasche</td></tr>
+    <tr><td>🥃 Whisky Cola (Bar Kleinbasel)</td><td>7–9 CHF / Glas</td></tr>
+    <tr><td>🍸 Gin Tonic Dose (Supermarkt)</td><td>3–5 CHF</td></tr>
+    <tr><td>🍶 Vodka Flasche (Smirnoff o.ä.)</td><td>18–25 CHF</td></tr>
+    <tr><td>📍 Basel — Platz 6 Europas beim Kokainkonsum</td><td>Abwasseranalyse 2022</td></tr>
+  </table>
+  <div class="bk-src">Quellen: SRF Wissen Nov. 2024 · SWI Swissinfo März 2024 · Sucht Schweiz 2024 · Nau.ch / Suchtpanorama 2023</div>
+</section>
+
+<!-- MOTIV -->
+
+<section id="motivBanner">
+  <div class="mtext" id="motivText">💀 Wähle dein Datum — dann rechnen wir zusammen.</div>
+</section>
+
+<!-- FOOTER -->
+
+<div class="mq">
+  <div class="mq-track">
+    <span>¡FABI ESTÁ LIBRE!</span><span>💀 CLEAN IS THE NEW BLACK</span><span>🌵 BASEL SCHWEIZ</span>
+    <span>¡FABI ESTÁ LIBRE!</span><span>💀 CLEAN IS THE NEW BLACK</span><span>🌵 BASEL SCHWEIZ</span>
+    <span>¡FABI ESTÁ LIBRE!</span><span>💀 CLEAN IS THE NEW BLACK</span><span>🌵 BASEL SCHWEIZ</span>
+  </div>
+</div>
+<footer>
+  <div class="ft-title">FABI<br>ESTÁ<br>LIBRE</div>
+  <div class="emergency">🆘 Hilfe: 143 Telefonseelsorge · kostenlos · 24h</div>
+  <div class="ft-links">
+    <a href="https://www.suchtschweiz.ch" target="_blank">Sucht Schweiz →</a>
+    <a href="https://www.kvb-basel.ch" target="_blank">KVB Basel →</a>
+    <a href="https://www.arud.ch" target="_blank">ARUD →</a>
+  </div>
+  <div class="ft-copy">Made for Fabi · Basel, Schweiz · 2025<br>Preisdaten: SRF · SWI Swissinfo · Sucht Schweiz</div>
+</footer>
+
+<script>
+const KOKS_PRICE = 90;
+let days = 0;
+let koksDaysPerWeek = 2, koksGramPerSession = 1.0;
+let alkDaysPerWeek = 5, alkChfPerDay = 20;
+
+const motifs = [
+  "💀 Basel gehört dir jetzt — nüchtern und klar!",
+  "🌵 Du hast mehr Power als jede Line Koks!",
+  "🦅 Der Rhein fliesst — und du auch, clean!",
+  "🏆 Jeder Tag clean ist ein Sieg gegen den alten Fabi!",
+  "💰 Dein Dealer in Kleinbasel vermisst dich. Er ist arm.",
+  "🔥 Basel ist Platz 6 in Europa — du bist raus!",
+  "🎭 Art Basel? Du bist das grösste Kunstwerk der Stadt!",
+  "✨ Vom Dreiländereck aus — unaufhaltbar!",
+  "🎉 Kein Gramm mehr durch den Basler Rheinhafen für dich!",
+  "🌟 Clean ist das neue Schwarz — und das steht dir.",
+  "🏅 Ein Jahr Clean? LEGENDE VON BASEL!"
+];
+
+function fmt(n) { return Math.round(n).toLocaleString('de-CH'); }
+
+function recalc() {
+  // weekly preview
+  const gW = koksDaysPerWeek * koksGramPerSession;
+  const cW = gW * KOKS_PRICE;
+  const cM = cW * 4.33;
+  document.getElementById('gPerWeek').textContent = gW.toFixed(1) + 'g';
+  document.getElementById('chfPerWeek').textContent = fmt(cW);
+  document.getElementById('chfPerMonth').textContent = fmt(cM);
+
+  if (days <= 0) return;
+
+  const koksDay = (koksDaysPerWeek / 7) * koksGramPerSession * KOKS_PRICE;
+  const alkDay  = (alkDaysPerWeek / 7) * alkChfPerDay;
+  const koksSaved = days * koksDay;
+  const alkSaved  = days * alkDay;
+  const total     = koksSaved + alkSaved;
+
+  document.getElementById('koksTotal').textContent = fmt(koksSaved);
+  document.getElementById('alkTotal').textContent  = fmt(alkSaved);
+  document.getElementById('totalChf').textContent  = fmt(total);
+  document.getElementById('savedBig').textContent  = fmt(total);
+  document.getElementById('herodays').textContent  = days;
+
+  // buy cards
+  const prices = [80,130,28,65,45,55,65,120];
+  for (let i=1;i<=8;i++) document.getElementById('b'+i).textContent = Math.floor(total/prices[i-1])+'×';
+
+  // milestones
+  [7,30,100,180,365].forEach((t,i)=>{
+    const pct = Math.min(100,Math.round((days/t)*100));
+    document.getElementById('mf'+(i+1)).style.width = pct+'%';
+    document.getElementById('mp'+(i+1)).textContent = pct+'%';
+  });
+
+  // motiv
+  document.getElementById('motivText').textContent = motifs[days % motifs.length];
+
+  let badge = '';
+  if (days === 0)      badge = '🌱 Tag 1 — Der beste Tag zum Starten!';
+  else if (days < 7)   badge = `🔥 ${days} Tage — ¡Muy bien, Fabi!`;
+  else if (days < 30)  badge = `💪 ${Math.floor(days/7)} Wochen — auf Kurs!`;
+  else if (days < 100) badge = `🏆 ${Math.floor(days/30)} Monate — Legende in Entstehung!`;
+  else if (days < 365) badge = `🌟 ${days} Tage — FABI IST UNAUFHALTBAR!`;
+  else                 badge = `🎉 EIN GANZES JAHR — HELD VON BASEL!`;
+  document.getElementById('savedMotiv').textContent = badge;
+}
+
+// SLIDERS
+function bindSlider(id, dispId, transform, onUpdate) {
+  const el = document.getElementById(id);
+  el.addEventListener('input', () => {
+    document.getElementById(dispId).textContent = transform(el.value);
+    onUpdate(+el.value);
+    recalc();
+  });
+}
+
+bindSlider('koksDays','koksDaysDisp', v=>v, v=>{ koksDaysPerWeek=v; });
+bindSlider('koksGram','koksGramDisp', v=>v+'g', v=>{ koksGramPerSession=v; });
+bindSlider('alkDays','alkDaysDisp', v=>v, v=>{ alkDaysPerWeek=v; });
+bindSlider('alkChfSlider','alkChfDisp', v=>v+' CHF', v=>{ alkChfPerDay=v; });
+
+// DATE
+document.getElementById('startDate').addEventListener('change', function(){
+  const d = new Date(this.value);
+  const diff = Date.now() - d;
+  if (diff < 0) { days=0; return; }
+  days = Math.floor(diff/86400000);
+  localStorage.setItem('fabiStart', this.value);
+  recalc();
+});
+
+// INIT
+window.addEventListener('load', ()=>{
+  const saved = localStorage.getItem('fabiStart');
+  if (saved) {
+    document.getElementById('startDate').value = saved;
+    days = Math.max(0, Math.floor((Date.now()-new Date(saved))/86400000));
+    recalc();
+  }
+  setInterval(()=>{
+    const v = document.getElementById('startDate').value;
+    if (v) { days=Math.max(0,Math.floor((Date.now()-new Date(v))/86400000)); recalc(); }
+  }, 60000);
+});
+</script>
+
+</body>
+</html>
